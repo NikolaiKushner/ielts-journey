@@ -58,17 +58,17 @@ A full day: 15 min words in Reps · 20 min listening + shadowing · 25 min main 
 
 - **Overview** — 52-week map, phases, start and exam dates
 - **Week** — tasks with checkboxes and weekly notes
-- **Daily** — today's routine and an 8-week streak
+- **Today** (opens by default) — concrete steps for today based on the week and the day of the rhythm, with a «Start with agent» button that copies the command and the report together, plus an 8-week streak
 - **Mocks** — scores for Listening, Reading, Writing, Speaking; overall band calculated by IELTS rounding rules; progress chart against the 6.5 target
-- **Errors** — personal error log ("wrong → right")
+- **Errors** — error log: paste the agent's whole ERRORS block at once, repeats bump a ×N counter instead of duplicating, mark errors as learned; the report sends only active errors, most frequent first
 - **Resources** — exam sites, books, word lists, practice sources
 - **Agent** — one-click report for the AI tutor, JSON export / import
 
 ## How to study with the agent
 
 1. Start a new chat with an AI assistant and paste the text from [AGENT.md](AGENT.md).
-2. At the start of each session, open the **Agent** tab and click **Copy report**. Send it to the agent.
-3. Use commands: `daily`, `grammar`, `check writing`, `speaking`, `mock speaking`, `mock review`, `weekly review`.
+2. Open the page — it starts on **Today**. Press **Start with agent** on a step: the command and the report are copied together. Paste them into the chat.
+3. Use commands: `words`, `daily`, `grammar`, `check writing`, `speaking`, `mock speaking`, `mock review`, `weekly review`.
 4. Move the agent's **ERRORS** block into the **Errors** tab.
 5. Tick completed tasks on the page.
 
@@ -87,4 +87,4 @@ Use **Export JSON** once a week as a backup, and **Import JSON** to move to anot
 
 ## Tech
 
-One static `index.html` — plain HTML, CSS and JavaScript, no build step, no dependencies. Hosted on GitHub Pages. Light and dark themes, mobile-friendly.
+`index.html` + `plan.js` (plan data and the daily logic, also used by the 08:30 reminder in Node) — plain HTML, CSS and JavaScript, no build step, no dependencies. Hosted on GitHub Pages. Light and dark themes, mobile-friendly.
