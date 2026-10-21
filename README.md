@@ -34,7 +34,7 @@ Checkpoints at weeks **14**, **26** and **38**: level test + honest review with 
 Each week (phases 1–3) has six tasks:
 
 - **Grammar** — one topic, explained and drilled with the agent
-- **Vocabulary** — a word block, reviewed daily in SRS (Anki or similar)
+- **Vocabulary** — a word block, a separate word group in [Reps: English Drills](https://apps.apple.com/search?term=Reps%20English%20Drills), reviewed daily
 - **Listening** — BBC 6 Minute English → TED-Ed → TED talks
 - **Reading** — graded readers → BBC Learning English → BBC Future / The Conversation
 - **Writing** — one text per week, checked by the agent
@@ -52,7 +52,7 @@ Each week (phases 1–3) has six tasks:
 | Sat | — | 2 h: writing, grammar, weekly review |
 | Sun | — | Rest |
 
-A full day: 15 min SRS · 20 min listening + shadowing · 25 min main task · 10–15 min speaking.
+A full day: 15 min words in Reps · 20 min listening + shadowing · 25 min main task · 10–15 min speaking.
 
 ## Page features
 
