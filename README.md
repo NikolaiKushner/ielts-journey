@@ -14,7 +14,7 @@
 | Start level | A2 |
 | Target | IELTS Academic **6.5** overall, at least **6.0** in each part |
 | Duration | 52 weeks (start: 2 Nov 2026) |
-| Workload | ~9 hours per week: 70–80 min on weekdays, 2 h on Saturday, Sunday off |
+| Workload | ~6 hours of self-study + a tutor and 2 speaking groups per week |
 | Why | Entry requirement for an online bachelor's degree, then an in-person master's |
 
 ## Phases
@@ -40,14 +40,19 @@ Each week (phases 1–3) has six tasks:
 - **Writing** — one text per week, checked by the agent
 - **Speaking** — a topic conversation with the agent
 
-### Daily routine
+### Weekly rhythm
 
-| Time | Activity |
-| --- | --- |
-| 15 min | Vocabulary in SRS |
-| 20 min | Listening + 5 min shadowing |
-| 25 min | Main task of the week |
-| 10–15 min | Speaking with the agent |
+| Day | With people | Self-study |
+| --- | --- | --- |
+| Mon | Tutor | 30 min: vocabulary + listening |
+| Tue | Speaking group | 30 min: vocabulary + listening |
+| Wed | — | ~75 min: full day |
+| Thu | Speaking group | 30 min: vocabulary + listening |
+| Fri | — | ~75 min: full day |
+| Sat | — | 2 h: writing, grammar, weekly review |
+| Sun | — | Rest |
+
+A full day: 15 min SRS · 20 min listening + shadowing · 25 min main task · 10–15 min speaking.
 
 ## Page features
 

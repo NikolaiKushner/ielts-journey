@@ -94,7 +94,7 @@ pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);borde
   <header class="top">
     <div>
       <h1>English: A2 → IELTS Academic 6.5</h1>
-      <p>52 недели · ~9 часов в неделю · учёба вместе с агентом</p>
+      <p>52 недели · ~6 часов самостоятельно + репетитор и 2 разговорные группы в неделю · учёба вместе с агентом</p>
     </div>
     <button class="theme" id="themeBtn" title="Тема">◐ Тема</button>
   </header>
@@ -159,8 +159,22 @@ pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);borde
         <h3 style="margin:0">Сегодня · <span id="todayLbl"></span></h3>
         <span class="tag" id="dailyPhase"></span>
       </div>
-      <p class="small muted" style="margin:4px 0 0">Будни — 70–80 минут. Суббота — длинная сессия 2 часа. Воскресенье — отдых.</p>
+      <p class="small" style="margin:4px 0 0"><b id="dayType"></b></p>
       <ul class="tasks" id="dailyList"></ul>
+    </div>
+    <div class="card">
+      <h3>Ритм недели</h3>
+      <table class="small">
+        <tr><th>День</th><th>С людьми</th><th>Самостоятельно</th></tr>
+        <tr><td>Пн</td><td>Репетитор</td><td>30 мин: слова + аудирование</td></tr>
+        <tr><td>Вт</td><td>Разговорная группа</td><td>30 мин: слова + аудирование</td></tr>
+        <tr><td>Ср</td><td>—</td><td>75 мин: полный день</td></tr>
+        <tr><td>Чт</td><td>Разговорная группа</td><td>30 мин: слова + аудирование</td></tr>
+        <tr><td>Пт</td><td>—</td><td>75 мин: полный день</td></tr>
+        <tr><td>Сб</td><td>—</td><td>2 часа: письмо, грамматика, разбор недели</td></tr>
+        <tr><td>Вс</td><td>—</td><td>Отдых</td></tr>
+      </table>
+      <p class="small muted" style="margin:8px 0 0">Всего ~6 часов самостоятельно + 3 занятия с людьми. Говорение в основном на группах и у репетитора, агент — для письма и грамматики.</p>
     </div>
     <div class="card">
       <h3>Серия за 8 недель</h3>
@@ -371,18 +385,30 @@ function weekData(n){
   ]};
 }
 
+// Weekly rhythm: Mon — tutor, Tue/Thu — speaking groups (light self-study), Wed/Fri — full, Sat — long, Sun — rest
 const DAILY = {
-  base:[
+  full:{label:"Полный день · ~75 минут", tasks:[
     ["15 мин","Слова в SRS (Anki или аналог)"],
     ["20 мин","Аудирование + 5 минут shadowing (повторять за диктором)"],
     ["25 мин","Главное задание недели (грамматика / чтение / письмо)"],
-    ["10–15 мин","Говорение: агент голосом или вслух сам"]],
-  sat:[
-    ["60 мин","Письмо недели + разбор с агентом"],
-    ["30 мин","Говорение с агентом по теме недели"],
-    ["30 мин","Журнал ошибок + отметить неделю"]],
-  sun:[["—","Отдых. Можно сериал на английском с английскими субтитрами"]]
+    ["10–15 мин","Говорение: агент голосом или вслух сам"]]},
+  tutor:{label:"Лёгкий день · репетитор + 30 минут", tasks:[
+    ["Занятие","Репетитор: проверка письма недели, вопросы по грамматике"],
+    ["15 мин","Слова в SRS"],
+    ["15 мин","Аудирование + shadowing"],
+    ["5 мин","Ошибки от репетитора → журнал ошибок"]]},
+  group:{label:"Лёгкий день · разговорная группа + 30 минут", tasks:[
+    ["Занятие","Разговорная группа"],
+    ["15 мин","Слова в SRS"],
+    ["15 мин","Аудирование + shadowing или чтение"],
+    ["5 мин","Ошибки и новые слова с группы → журнал и SRS"]]},
+  sat:{label:"Длинная сессия · 2 часа", tasks:[
+    ["60 мин","Письмо недели + разбор с агентом (check writing)"],
+    ["30 мин","Грамматика недели с агентом: то, что не успел в будни"],
+    ["30 мин","Журнал ошибок + weekly review + отметить неделю"]]},
+  sun:{label:"Отдых", tasks:[["—","Отдых. Можно сериал на английском с английскими субтитрами"]]}
 };
+const DAY_PLAN = ['sun','tutor','group','full','group','full','sat']; // index = getDay()
 
 const RES = [
   ["Экзамен",[
@@ -411,7 +437,7 @@ const RES = [
     ["Cambridge English — Test your English","https://www.cambridgeenglish.org/test-your-english/"]]]
 ];
 
-const AGENT_PROMPT = `Ты мой персональный преподаватель английского. Цель: за 52 недели пройти путь от A2 до IELTS Academic 6.5 (минимум 6.0 в каждой части). Я работаю full-time (Senior Frontend), учусь ~9 часов в неделю.
+const AGENT_PROMPT = `Ты мой персональный преподаватель английского. Цель: за 52 недели пройти путь от A2 до IELTS Academic 6.5 (минимум 6.0 в каждой части). Я работаю full-time (Senior Frontend). Ритм недели: Пн — репетитор, Вт и Чт — разговорные группы (в эти дни самостоятельно только 30 минут), Ср и Пт — полные дни по ~75 минут, Сб — 2 часа, Вс — отдых. Говорение я практикую в основном с людьми, поэтому от тебя больше всего нужны письмо, грамматика и разбор ошибок.
 
 В начале сессии я присылаю «Отчёт» со страницы плана: текущая неделя, задачи, прогресс, тесты, журнал ошибок. Работай строго по нему.
 
@@ -470,7 +496,8 @@ function render(){
   $('weekCard').querySelectorAll('input').forEach(c=>c.onchange=()=>{const a=S.weeks[viewWeek]||[];a[+c.dataset.i]=c.checked;S.weeks[viewWeek]=a;save()});
   $('weekNote').value=S.notes[viewWeek]||'';
   // daily
-  const dow=new Date().getDay(),list=dow===6?DAILY.sat:dow===0?DAILY.sun:DAILY.base,dk=today(),dv=S.daily[dk]||[];
+  const dow=new Date().getDay(),dp=DAILY[DAY_PLAN[dow]],list=dp.tasks,dk=today(),dv=S.daily[dk]||[];
+  $('dayType').textContent=dp.label;
   $('todayLbl').textContent=new Date().toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'});
   $('dailyPhase').textContent='Неделя '+cw+' · '+weekData(cw).title;
   $('dailyList').innerHTML=list.map((t,i)=>`<li class="${dv[i]?'done':''}"><input type="checkbox" data-i="${i}" ${dv[i]?'checked':''}><span><span class="k">${t[0]}</span> — ${t[1]}</span></li>`).join('');
@@ -501,7 +528,10 @@ function report(){
   const cw=curWeek(),wd=weekData(cw),dn=S.weeks[cw]||[];
   let T=0,D=0;for(let n=1;n<=52;n++){const x=wDone(n);T+=x.t;D+=x.d}
   const behind=[];for(let n=1;n<cw;n++){const x=wDone(n);if(x.d<x.t)behind.push(n)}
-  let r=`ОТЧЁТ · ${today()}\nУровень на старте: ${S.level} · Цель: IELTS Academic 6.5\nНеделя ${cw}/52 (${weekDates(cw)}) · Фаза ${phaseOf(cw).id}: ${phaseOf(cw).name}\nВыполнено всего: ${Math.round(D/T*100)}% · Серия: ${streak()} дн.\n`;
+  const dpT=DAILY[DAY_PLAN[new Date().getDay()]].label;
+  let r=`ОТЧЁТ · ${today()} · сегодня: ${dpT}\nУровень на старте: ${S.level} · Цель: IELTS Academic 6.5\n`;
+  r+=`Ритм: Пн репетитор · Вт/Чт разговорные группы · Ср/Пт полные дни · Сб 2 ч · Вс отдых\n`;
+  r+=`Неделя ${cw}/52 (${weekDates(cw)}) · Фаза ${phaseOf(cw).id}: ${phaseOf(cw).name}\nВыполнено всего: ${Math.round(D/T*100)}% · Серия: ${streak()} дн.\n`;
   if(S.exam)r+=`Экзамен: ${S.exam}\n`;
   r+=`\nЗАДАЧИ НЕДЕЛИ ${cw}: ${wd.title}\n`+wd.tasks.map((t,i)=>`[${dn[i]?'x':' '}] ${t[0]}: ${t[1]}`).join('\n');
   if(behind.length)r+=`\n\nНЕЗАКРЫТЫЕ НЕДЕЛИ: ${behind.slice(-6).join(', ')}`;
