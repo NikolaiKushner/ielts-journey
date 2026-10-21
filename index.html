@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English → IELTS 6.5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --card:#ffffff; --ink:#1d1d1f; --muted:#6b6b70; --line:#e4e2dc;
+  --accent:#2f6fde; --accent-soft:#e6eefc; --ok:#1f9d55; --ok-soft:#e3f5ea; --warn:#c77700;
+  --p1:#7a5af8; --p2:#2f6fde; --p3:#0f9b8e; --p4:#d9822b; --p5:#d14343;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121214; --card:#1c1c1f; --ink:#f2f2f4; --muted:#a0a0a8; --line:#2c2c31;
+    --accent:#6c9cff; --accent-soft:#1e2a44; --ok:#3ccf7f; --ok-soft:#163323; --warn:#f0a13a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121214; --card:#1c1c1f; --ink:#f2f2f4; --muted:#a0a0a8; --line:#2c2c31;
+  --accent:#6c9cff; --accent-soft:#1e2a44; --ok:#3ccf7f; --ok-soft:#163323; --warn:#f0a13a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:920px;margin:0 auto;padding:20px 16px 80px}
+header h1{font-size:24px;margin:4px 0 2px}
+header p{margin:0;color:var(--muted)}
+.top{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between}
+.theme{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px}
+.stat b{display:block;font-size:20px}
+.stat span{color:var(--muted);font-size:12px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--accent);width:0}
+nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin:8px 0 16px;position:sticky;top:0;background:var(--bg);z-index:5;padding-top:8px}
+nav button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 12px;border-radius:99px;cursor:pointer;font:inherit;font-size:14px}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+section{display:none}
+section.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.card h3{margin:0 0 6px;font-size:16px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.phases{display:grid;gap:10px}
+.phase{border-left:4px solid var(--c);padding:12px 14px;background:var(--card);border-radius:0 var(--radius) var(--radius) 0;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.phase h4{margin:0;font-size:15px}
+.phase .meta{color:var(--muted);font-size:13px}
+.weeknav{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.weeknav button,.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.weeknav select{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:7px;font:inherit;font-size:14px;max-width:100%}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.tasks{list-style:none;padding:0;margin:10px 0 0}
+.tasks li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}
+.tasks li:first-child{border-top:0}
+.tasks input{width:20px;height:20px;margin-top:1px;accent-color:var(--ok);flex:none}
+.tasks li.done span{color:var(--muted);text-decoration:line-through}
+.tasks .k{font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(13,1fr);gap:4px;margin-top:10px}
+.cell{aspect-ratio:1;border-radius:4px;background:var(--line);font-size:10px;display:flex;align-items:center;justify-content:center;color:var(--muted);cursor:pointer;border:0;padding:0}
+.cell.part{background:var(--accent-soft);color:var(--accent)}
+.cell.full{background:var(--ok);color:#fff}
+.cell.cur{outline:2px solid var(--ink);outline-offset:1px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-top:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;border-top:0}
+.form{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:8px}
+.form input,.form select,textarea{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px;font:inherit;font-size:14px}
+.form .wide{grid-column:span 2}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;font-size:13px;max-height:340px;overflow:auto}
+.del{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px}
+.streak{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+.streak i{width:14px;height:14px;border-radius:3px;background:var(--line);display:block}
+.streak i.on{background:var(--ok)}
+.chart{width:100%;height:auto;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:.2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .form{grid-template-columns:repeat(2,1fr)}
+  .form .wide{grid-column:span 2}
+  .grid{grid-template-columns:repeat(9,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>English: A2 → IELTS Academic 6.5</h1>
+      <p>52 недели · ~9 часов в неделю · учёба вместе с агентом</p>
+    </div>
+    <button class="theme" id="themeBtn" title="Тема">◐ Тема</button>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><b id="sWeek">—</b><span>текущая неделя</span></div>
+    <div class="stat"><b id="sDone">0%</b><span>план выполнен</span><div class="bar"><i id="sBar"></i></div></div>
+    <div class="stat"><b id="sStreak">0</b><span>дней подряд</span></div>
+    <div class="stat"><b id="sBand">—</b><span>последний тест (overall)</span></div>
+  </div>
+
+  <nav id="tabs">
+    <button data-t="overview" class="on">Обзор</button>
+    <button data-t="week">Неделя</button>
+    <button data-t="daily">Каждый день</button>
+    <button data-t="mocks">Тесты</button>
+    <button data-t="errors">Ошибки</button>
+    <button data-t="resources">Ресурсы</button>
+    <button data-t="agent">Агент</button>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="on">
+    <div class="card">
+      <h3>Цель</h3>
+      <p class="muted" style="margin:0">Сдать <b>IELTS Academic</b> на <b>6.5</b> (не ниже 6.0 в каждой части). Этого хватает для большинства онлайн- и очных программ. Многим программам достаточно 6.0 — проверь требования выбранного вуза.</p>
+      <div class="form" style="margin-top:12px">
+        <label class="wide small">Старт плана<input type="date" id="startDate"></label>
+        <label class="wide small">Дата экзамена<input type="date" id="examDate"></label>
+        <label class="wide small">Уровень сейчас<select id="level"><option>A2</option><option>A2+</option><option>B1</option><option>B1+</option><option>B2</option></select></label>
+      </div>
+      <p class="small muted" id="examLeft" style="margin:8px 0 0"></p>
+    </div>
+    <div class="card">
+      <h3>Карта недель</h3>
+      <p class="small muted" style="margin:0">Нажми на неделю, чтобы открыть её. Зелёный — всё сделано, голубой — частично.</p>
+      <div class="grid" id="weekGrid"></div>
+    </div>
+    <h3 style="margin:18px 0 8px">Фазы</h3>
+    <div class="phases" id="phaseList"></div>
+  </section>
+
+  <!-- WEEK -->
+  <section id="week">
+    <div class="weeknav">
+      <button id="prevW">←</button>
+      <select id="weekSel"></select>
+      <button id="nextW">→</button>
+      <button id="toCur">Сегодня</button>
+    </div>
+    <div class="card" id="weekCard"></div>
+    <div class="card">
+      <h3>Заметки недели</h3>
+      <textarea id="weekNote" rows="4" placeholder="Что было трудно, что повторить, отзыв агента…"></textarea>
+    </div>
+  </section>
+
+  <!-- DAILY -->
+  <section id="daily">
+    <div class="card">
+      <div class="row" style="justify-content:space-between">
+        <h3 style="margin:0">Сегодня · <span id="todayLbl"></span></h3>
+        <span class="tag" id="dailyPhase"></span>
+      </div>
+      <p class="small muted" style="margin:4px 0 0">Будни — 70–80 минут. Суббота — длинная сессия 2 часа. Воскресенье — отдых.</p>
+      <ul class="tasks" id="dailyList"></ul>
+    </div>
+    <div class="card">
+      <h3>Серия за 8 недель</h3>
+      <div class="streak" id="streak"></div>
+    </div>
+  </section>
+
+  <!-- MOCKS -->
+  <section id="mocks">
+    <div class="card">
+      <h3>Результаты тестов</h3>
+      <p class="small muted" style="margin:0">Записывай каждый пробный тест. Overall считается по правилам IELTS.</p>
+      <div class="form">
+        <input type="date" id="mDate" class="wide">
+        <input type="number" step="0.5" min="0" max="9" id="mL" placeholder="Listening">
+        <input type="number" step="0.5" min="0" max="9" id="mR" placeholder="Reading">
+        <input type="number" step="0.5" min="0" max="9" id="mW" placeholder="Writing">
+        <input type="number" step="0.5" min="0" max="9" id="mS" placeholder="Speaking">
+        <input type="text" id="mNote" class="wide" placeholder="Источник: Cambridge 18 Test 2">
+        <button class="btn primary" id="mAdd">Добавить</button>
+      </div>
+    </div>
+    <div class="card">
+      <svg class="chart" id="mChart" viewBox="0 0 600 200"></svg>
+      <table id="mTable"></table>
+    </div>
+  </section>
+
+  <!-- ERRORS -->
+  <section id="errors">
+    <div class="card">
+      <h3>Журнал ошибок</h3>
+      <p class="small muted" style="margin:0">Сюда — ошибки, которые нашёл агент. Повторяй журнал раз в неделю.</p>
+      <div class="form">
+        <select id="eCat"><option>Grammar</option><option>Vocabulary</option><option>Pronunciation</option><option>Writing</option><option>Listening</option><option>Reading</option></select>
+        <input type="text" id="eWrong" class="wide" placeholder="Как сказал(а)">
+        <input type="text" id="eRight" class="wide" placeholder="Как правильно">
+        <button class="btn primary" id="eAdd">Добавить</button>
+      </div>
+    </div>
+    <div class="card"><table id="eTable"></table></div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="card" id="resList"></div>
+  </section>
+
+  <!-- AGENT -->
+  <section id="agent">
+    <div class="card">
+      <h3>Как учиться с агентом</h3>
+      <ol class="small" style="padding-left:18px;margin:6px 0 0">
+        <li>Запусти агента в отдельном чате и вставь ему инструкцию из файла <b>AGENT.md</b> (или кнопкой ниже).</li>
+        <li>В начале каждой сессии нажми <b>«Скопировать отчёт»</b> и отправь агенту. Так он видит неделю, прогресс, тесты и ошибки.</li>
+        <li>Агент проверяет письмо, проводит разговорную практику и даёт задания. Отмечай выполненное здесь.</li>
+        <li>Ошибки из его разбора добавляй во вкладку «Ошибки».</li>
+        <li>Раз в неделю делай экспорт JSON — это резервная копия. Прогресс хранится только в этом браузере.</li>
+      </ol>
+      <div class="row" style="margin-top:12px">
+        <button class="btn primary" id="copyReport">Скопировать отчёт</button>
+        <button class="btn" id="copyPrompt">Скопировать инструкцию агенту</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Отчёт для агента</h3>
+      <pre id="report"></pre>
+    </div>
+    <div class="card">
+      <h3>Резервная копия</h3>
+      <div class="row">
+        <button class="btn" id="exp">Экспорт JSON</button>
+        <button class="btn" id="imp">Импорт JSON</button>
+        <input type="file" id="impFile" accept="application/json" hidden>
+        <button class="btn" id="reset" style="margin-left:auto;color:#d14343">Сбросить всё</button>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- PLAN DATA ---------- */
+const PHASES = [
+  {id:1, name:"A2 → B1: фундамент", weeks:[1,14], c:"var(--p1)",
+   goal:"Базовая грамматика, 1000+ частых слов, понимать медленную речь, писать простые тексты 100–150 слов."},
+  {id:2, name:"B1 → B1+: уверенность", weeks:[15,26], c:"var(--p2)",
+   goal:"Сложнее грамматика, 2000+ слов, читать новости для изучающих, говорить 2 минуты без пауз."},
+  {id:3, name:"B1+ → B2: академический английский", weeks:[27,38], c:"var(--p3)",
+   goal:"Academic Word List, сложные предложения, первые IELTS-эссе и описания графиков."},
+  {id:4, name:"Формат IELTS", weeks:[39,48], c:"var(--p4)",
+   goal:"Все типы заданий, тайминг, пробные тесты каждые 2–3 недели, запись на экзамен."},
+  {id:5, name:"Финиш и экзамен", weeks:[49,52], c:"var(--p5)",
+   goal:"Полные тесты, работа над слабыми местами, отдых, экзамен."}
+];
+
+// [title, grammar, vocab, writing, speaking] for phases 1–3; custom task lists for 4–5 and checkpoints
+const W = {
+1:["Диагностика и старт","Тест уровня + to be, Present Simple","Oxford 3000 (A1–A2), блок 1 — работа и дом, 80 слов","8–10 предложений о себе","Агент: представиться, 5 минут"],
+2:["Мой день","Present Continuous; Simple vs Continuous","A2, блок 2 — день и время, 80 слов","«Мой обычный день», 80 слов","Рассказать о своём дне"],
+3:["Прошлое","Past Simple: правильные и неправильные глаголы","A2, блок 3 — путешествия, 80 слов","Поездка, которую помню, 100 слов","Что делал на выходных"],
+4:["Детство","Past Continuous; used to","A2, блок 4 — школа и детство, 80 слов","Моё детство, 100 слов","Детство и школа"],
+5:["Планы","Future: will / going to / Present Continuous","A2, блок 5 — планы и цели, 80 слов","Планы на год, 100 слов","Планы на будущее"],
+6:["Опыт","Present Perfect: ever, never, just, already, yet","B1, блок 1 — опыт и события, 80 слов","Самое интересное, что я делал, 100 слов","Игра «Have you ever…?»"],
+7:["Еда и покупки","Countable/uncountable; some, any, much, many","B1, блок 2 — еда и магазины, 80 слов","Рецепт любимого блюда, 120 слов","Еда и рестораны"],
+8:["Города","Comparatives и superlatives","B1, блок 3 — город и места, 80 слов","Сравнить два города, 120 слов","Сравнить места, где жил"],
+9:["Работа","Modals: can, must, have to, should","B1, блок 4 — работа и офис, 80 слов","Советы новичку в IT, 120 слов","Моя работа"],
+10:["Технологии","Articles: a, an, the, без артикля","B1, блок 5 — технологии, 80 слов","Описать свой проект, 120 слов","Рассказать о проекте"],
+11:["Повседневные ситуации","Предлоги времени и места; базовые phrasal verbs","B1, блок 6 — фразовые глаголы, 60 штук","Email другу, 120 слов","Ролевая игра: отель и аэропорт"],
+12:["Достижения","Present Perfect vs Past Simple","B1, блок 7 — здоровье и спорт, 80 слов","История об успехе, 150 слов","Мои достижения"],
+13:["Если…","Conditionals 0 и 1","B1, блок 8 — природа и погода, 80 слов","«Если я поступлю, то…», 150 слов","Вопросы «What will you do if…?»"],
+15:["Учёба","Present Perfect Continuous","B1, блок 9 — образование, 80 слов","Как я учился раньше, 150 слов","IELTS Part 1: study"],
+16:["Процессы","Passive: present и past","B1, блок 10 — процессы и производство, 80 слов","Как работает деплой, 150 слов","Объяснить процесс"],
+17:["Люди","Relative clauses: who, which, that, where","B1, блок 11 — характер и внешность, 80 слов","Описать человека, 150 слов","IELTS Part 2: describe a person"],
+18:["Гипотезы","Conditional 2","B1, блок 12 — деньги и покупки, 80 слов","«Если бы у меня был год свободы», 150 слов","Вопросы «What would you do if…?»"],
+19:["Хобби","Gerund vs infinitive","B1, блок 13 — хобби и спорт, 80 слов","Моё хобби, 150 слов","IELTS Part 1: free time"],
+20:["Новости","Reported speech","B1, блок 14 — медиа и новости, 80 слов","Пересказ новости, 150 слов","Пересказать статью агенту"],
+21:["Мнения","Linking words: however, although, because of, so","B1, блок 15 — мнения и споры, 80 слов","Абзац-мнение «Remote work is better», 180 слов","Обсудить мнение с агентом"],
+22:["Экология","Quantifiers; too / enough","B1, блок 16 — окружающая среда, 80 слов","Проблема моего города, 180 слов","IELTS Part 3: environment"],
+23:["Карьера","Future Continuous / Perfect; time clauses","B1, блок 17 — карьера, 80 слов","Где я буду через 5 лет, 180 слов","IELTS Part 2: describe a goal"],
+24:["Официальные письма","Modals of deduction: must, might, can't","B1, блок 18 — наука, 80 слов","Формальное письмо в университет, 180 слов","Ролевая игра: звонок в университет"],
+25:["Повторение","Повтор всей грамматики фазы","Повтор всех B1-блоков в SRS","Первое эссе, 200 слов","Агент: IELTS Part 1 + Part 2"],
+27:["Эссе: старт","Conditional 3; wish / if only","AWL sublist 1 (60 слов)","IELTS Task 2: структура и вступление","IELTS Part 3: education"],
+28:["Процесс","Passive во всех временах; have something done","AWL sublist 2","IELTS Task 1: process diagram","Объяснить диаграмму вслух"],
+29:["Мнение","Participle clauses; сложные relative clauses","AWL sublist 3","IELTS Task 2: opinion essay, 250 слов","IELTS Part 2 + 3"],
+30:["Графики","Cohesion: furthermore, whereas, consequently","AWL sublist 4","IELTS Task 1: line graph","IELTS Part 3: technology"],
+31:["Академический стиль","Nominalisation","AWL sublist 5","IELTS Task 2: discussion essay","IELTS Part 3: work"],
+32:["Осторожность","Hedging: tend to, it appears, may","AWL sublist 6","IELTS Task 1: bar chart","IELTS Part 3: health"],
+33:["Проблемы и решения","Despite, although, whereas; сложные предложения","AWL sublist 7","IELTS Task 2: problem / solution","IELTS Part 2 + 3: cities"],
+34:["Перефразирование","Paraphrasing: синонимы, формы слова, структура","AWL sublist 8","Перефразировать 10 тем + Task 1 table","Отвечать без повторения слов вопроса"],
+35:["Акценты","Cleft sentences; лёгкая инверсия","AWL sublist 9","IELTS Task 2: advantages / disadvantages","IELTS Part 3: media"],
+36:["Коллокации","Collocations: make / do / take, академические","AWL sublist 10","IELTS Task 1: pie chart","IELTS Part 2: 5 карточек"],
+37:["Повторение","Журнал ошибок: топ-10 и упражнения","Повтор AWL 1–10","Две Task 2 подряд","Полный Speaking mock"]
+};
+
+const CUSTOM = {
+14:{title:"Контрольная точка A2 → B1", tasks:[
+  ["Тест","Онлайн-тест уровня (EF SET или Cambridge) — записать результат в заметки"],
+  ["Письмо","Текст 150 слов о себе и своих планах — агент оценивает по уровню CEFR"],
+  ["Говорение","Разговор с агентом 15 минут — агент оценивает уровень"],
+  ["Ошибки","Перенести топ-10 ошибок в журнал"],
+  ["Отдых","Один свободный день — без чувства вины"]]},
+26:{title:"Контрольная точка B1+", tasks:[
+  ["Тест","Бесплатные IELTS Listening + Reading (British Council / IELTS.org) — записать во вкладку «Тесты»"],
+  ["Письмо","Эссе 200 слов — агент даёт примерный band по 4 критериям"],
+  ["Говорение","IELTS Speaking Part 1–3 с агентом — примерный band"],
+  ["Ошибки","Обновить журнал ошибок"],
+  ["План","Скорректировать план с агентом, если что-то отстаёт"]]},
+38:{title:"Контрольная точка B2", tasks:[
+  ["Тест","Полный тест Cambridge IELTS (книга 16–19), без жёсткого тайминга"],
+  ["Письмо","Агент оценивает Task 1 и Task 2 по критериям IELTS"],
+  ["Говорение","Полный Speaking mock с агентом"],
+  ["Анализ","Записать результаты во «Тесты», выбрать 3 слабых места"],
+  ["Решение","Если overall ≥ 5.5 — идём в формат IELTS; если ниже — повторяем 2 недели фазы 3"]]},
+39:{title:"Listening 1–2 · True/False/Not Given", tasks:[
+  ["Listening","Sections 1–2: формы, таблицы, карты — 2 практики"],["Reading","True / False / Not Given — 2 текста + разбор"],
+  ["Writing","Task 1: map — агент проверяет"],["Speaking","Part 1: 20 вопросов на беглость"],["Слова","Тема: crime & law, 40 слов"]]},
+40:{title:"Listening 3–4 · Matching headings", tasks:[
+  ["Listening","Sections 3–4: лекции — 2 практики с конспектом"],["Reading","Matching headings — 2 текста"],
+  ["Writing","Task 2 opinion — ровно 40 минут"],["Speaking","Part 2: 5 карточек, 1 минута подготовки"],["Слова","Тема: globalisation, 40 слов"]]},
+41:{title:"Multiple choice · Completion", tasks:[
+  ["Listening","Multiple choice — 2 практики"],["Reading","Sentence / summary completion — 2 текста"],
+  ["Writing","Task 1 mixed charts — ровно 20 минут"],["Speaking","Part 3: культура и искусство"],["Слова","Тема: culture & arts, 40 слов"]]},
+42:{title:"Mock #1", tasks:[
+  ["Mock","Полный тест Cambridge IELTS в реальном тайминге (L 30 · R 60 · W 60)"],["Speaking","Speaking mock с агентом"],
+  ["Анализ","Все ошибки → журнал; результаты → «Тесты»"],["План","Агент выбирает 3 слабых места на неделю 43"]]},
+43:{title:"Слабые места", tasks:[
+  ["Drill","Упражнения по 3 слабым местам из Mock #1"],["Writing","Две Task 2 в тайминге"],
+  ["Speaking","Полный mock с агентом"],["Слова","Тема: government & society, 40 слов"]]},
+44:{title:"Скорость чтения", tasks:[
+  ["Reading","3 текста за 60 минут — 2 раза"],["Writing","Task 1 process + Task 2"],
+  ["Listening","1 полный тест"],["Слова","Тема: family & lifestyle, 40 слов"]]},
+45:{title:"Mock #2 · запись на экзамен", tasks:[
+  ["Mock","Полный тест в тайминге"],["Speaking","Speaking mock"],
+  ["Экзамен","Записаться на IELTS Academic на неделю 51–52 (British Council или IDP)"],["Анализ","Ошибки → журнал"]]},
+46:{title:"Интенсив по письму", tasks:[
+  ["Writing","3 × Task 2 — агент оценивает каждую по 4 критериям"],["Writing","2 × Task 1"],
+  ["Speaking","3 полных mock"],["Слова","Повтор тематических слов"]]},
+47:{title:"Mock #3", tasks:[
+  ["Mock","Полный тест в тайминге"],["Speaking","Speaking mock"],["Анализ","Сравнить с Mock #1 и #2"]]},
+48:{title:"Шаблоны и повторение", tasks:[
+  ["Writing","Свои шаблоны вступлений и выводов для Task 1 и Task 2"],["Speaking","Свои истории для Part 2 (5–6 универсальных)"],
+  ["Ошибки","Повтор журнала ошибок"],["Слова","Повтор AWL и тем"]]},
+49:{title:"Mock #4", tasks:[
+  ["Mock","Полный тест в тайминге"],["Drill","Слабые места"],["Speaking","15 минут каждый день"]]},
+50:{title:"Mock #5", tasks:[
+  ["Mock","Полный тест в тайминге"],["Speaking","15 минут каждый день"],["Writing","1 × Task 1 + 1 × Task 2"]]},
+51:{title:"Лёгкая неделя", tasks:[
+  ["Mock","Только Listening + Reading"],["Повтор","Журнал ошибок, шаблоны, истории"],
+  ["Логистика","Паспорт, адрес центра, время, дорога"],["Сон","Ложиться вовремя"]]},
+52:{title:"Неделя экзамена", tasks:[
+  ["Лёгкая практика","30 минут в день, без новых тем"],["Отдых","День перед экзаменом — отдых"],
+  ["Экзамен","Сдать IELTS Academic"],["Результат","Записать баллы во «Тесты»"]]}
+};
+
+const LR = {1:["BBC 6 Minute English ×2 (с текстом)","Graded reader, уровень 2 — 2 главы"],
+            2:["BBC 6 Minute English ×2 + 1 TED-Ed","BBC Learning English — 2 статьи"],
+            3:["TED talk с конспектом ×2","BBC Future / The Conversation — 2 статьи"]};
+
+function phaseOf(n){return PHASES.find(p=>n>=p.weeks[0]&&n<=p.weeks[1])}
+function weekData(n){
+  if(CUSTOM[n]) return {title:CUSTOM[n].title, tasks:CUSTOM[n].tasks};
+  const w=W[n], p=phaseOf(n).id, lr=LR[p];
+  return {title:w[0], tasks:[
+    ["Грамматика",w[1]],["Слова",w[2]+" — в SRS каждый день"],
+    ["Аудирование",lr[0]],["Чтение",lr[1]],
+    ["Письмо",w[3]+" — агент проверяет"],["Говорение",w[4]]
+  ]};
+}
+
+const DAILY = {
+  base:[
+    ["15 мин","Слова в SRS (Anki или аналог)"],
+    ["20 мин","Аудирование + 5 минут shadowing (повторять за диктором)"],
+    ["25 мин","Главное задание недели (грамматика / чтение / письмо)"],
+    ["10–15 мин","Говорение: агент голосом или вслух сам"]],
+  sat:[
+    ["60 мин","Письмо недели + разбор с агентом"],
+    ["30 мин","Говорение с агентом по теме недели"],
+    ["30 мин","Журнал ошибок + отметить неделю"]],
+  sun:[["—","Отдых. Можно сериал на английском с английскими субтитрами"]]
+};
+
+const RES = [
+  ["Экзамен",[
+    ["IELTS.org — официальный сайт","https://ielts.org"],
+    ["British Council — запись и бесплатная практика","https://takeielts.britishcouncil.org"],
+    ["IDP IELTS — запись","https://ielts.idp.com"]]],
+  ["Грамматика",[
+    ["Murphy — English Grammar in Use (Intermediate, синяя)",""],
+    ["Murphy — Essential Grammar in Use (для фазы 1, красная)",""],
+    ["Cambridge — Grammar for IELTS",""]]],
+  ["Слова",[
+    ["Oxford 3000 / 5000","https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000"],
+    ["Academic Word List (Coxhead)","https://www.wgtn.ac.nz/lals/resources/academicwordlist"],
+    ["Cambridge — Vocabulary for IELTS",""]]],
+  ["Аудирование и чтение",[
+    ["BBC Learning English — 6 Minute English","https://www.bbc.co.uk/learningenglish"],
+    ["TED-Ed","https://ed.ted.com"],
+    ["BBC Future","https://www.bbc.com/future"],
+    ["The Conversation","https://theconversation.com"]]],
+  ["Практика IELTS",[
+    ["Cambridge IELTS Academic 16–19 (официальные тесты)",""],
+    ["IELTS Liz — бесплатные советы и примеры","https://ieltsliz.com"],
+    ["IELTS band descriptors (критерии оценки)","https://ielts.org"]]],
+  ["Тест уровня",[
+    ["EF SET — бесплатный тест","https://www.efset.org"],
+    ["Cambridge English — Test your English","https://www.cambridgeenglish.org/test-your-english/"]]]
+];
+
+const AGENT_PROMPT = `Ты мой персональный преподаватель английского. Цель: за 52 недели пройти путь от A2 до IELTS Academic 6.5 (минимум 6.0 в каждой части). Я работаю full-time (Senior Frontend), учусь ~9 часов в неделю.
+
+В начале сессии я присылаю «Отчёт» со страницы плана: текущая неделя, задачи, прогресс, тесты, журнал ошибок. Работай строго по нему.
+
+Режимы сессии (я пишу команду):
+- "daily" — 15 минут: короткий квиз по словам недели + 5 вопросов на грамматику недели + 3 вопроса для разговора.
+- "check writing" — я присылаю текст. Дай: (1) исправленную версию, (2) список ошибок «было → стало → правило», (3) в фазах 1–2 — уровень CEFR, в фазах 3–5 — band по 4 критериям IELTS (Task Achievement/Response, Coherence & Cohesion, Lexical Resource, Grammatical Range & Accuracy), (4) 2 совета на следующий текст.
+- "speaking" — проведи разговор по теме недели. Один вопрос за раз. После 10–15 минут — разбор: ошибки, лучшие формулировки, примерный уровень/band.
+- "grammar" — объясни тему недели просто, 5 примеров, 10 упражнений с проверкой.
+- "mock speaking" — полный IELTS Speaking Part 1–3 в реальном формате, потом band по 4 критериям.
+- "weekly review" — по отчёту: что сделано, что отстаёт, что поменять на следующей неделе.
+
+Правила:
+- Объясняй на русском, практику веди на английском.
+- В конце каждого разбора дай блок "ERRORS" — до 5 строк в формате: Категория | как я сказал | как правильно. Я перенесу их в журнал ошибок.
+- Будь честным в оценках. Не завышай баллы.
+- Если я отстаю на 2+ недели — предложи, как упростить план, а не просто ускориться.`;
+
+/* ---------- STATE ---------- */
+const KEY="ielts-plan-v1";
+const def={start:"2026-11-02",exam:"",level:"A2",weeks:{},notes:{},daily:{},mocks:[],errors:[]};
+let S=load();
+function load(){try{const r=localStorage.getItem(KEY);return r?Object.assign({},def,JSON.parse(r)):structuredClone(def)}catch(e){return structuredClone(def)}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){} render()}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1600)}
+
+/* ---------- HELPERS ---------- */
+const $=id=>document.getElementById(id);
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+function curWeek(){const s=new Date(S.start+'T00:00:00');const diff=Math.floor((new Date()-s)/864e5);return Math.min(52,Math.max(1,Math.floor(diff/7)+1))}
+function weekDates(n){const s=new Date(S.start+'T00:00:00');const a=new Date(s.getTime()+(n-1)*7*864e5),b=new Date(a.getTime()+6*864e5);const f=d=>d.toLocaleDateString('ru-RU',{day:'numeric',month:'short'});return f(a)+' – '+f(b)}
+function wDone(n){const t=weekData(n).tasks.length,d=(S.weeks[n]||[]).filter(Boolean).length;return {t,d}}
+function overall(m){const a=(+m.l + +m.r + +m.w + +m.s)/4;return Math.floor(a*2+0.5)/2}
+function streak(){let c=0;const d=new Date();for(;;){const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');const v=S.daily[k];if(v&&v.some(Boolean)){c++;d.setDate(d.getDate()-1)}else if(c===0&&k===today()){d.setDate(d.getDate()-1)}else break}return c}
+let viewWeek=null;
+
+/* ---------- RENDER ---------- */
+function render(){
+  const cw=curWeek(); if(viewWeek===null) viewWeek=cw;
+  // stats
+  let T=0,D=0;for(let n=1;n<=52;n++){const x=wDone(n);T+=x.t;D+=x.d}
+  const pct=Math.round(D/T*100);
+  $('sWeek').textContent=cw+' / 52';$('sDone').textContent=pct+'%';$('sBar').style.width=pct+'%';
+  $('sStreak').textContent=streak();
+  const lm=S.mocks[S.mocks.length-1];$('sBand').textContent=lm?overall(lm).toFixed(1):'—';
+  // overview
+  $('startDate').value=S.start;$('examDate').value=S.exam;$('level').value=S.level;
+  if(S.exam){const d=Math.ceil((new Date(S.exam+'T00:00:00')-new Date())/864e5);$('examLeft').textContent=d>0?`До экзамена ${d} дн. (~${Math.ceil(d/7)} нед.)`:'Дата экзамена прошла — запиши результат во «Тесты».'}else $('examLeft').textContent='Дату экзамена поставь, когда запишешься (план: неделя 45).';
+  const g=$('weekGrid');g.innerHTML='';
+  for(let n=1;n<=52;n++){const x=wDone(n),b=document.createElement('button');b.className='cell'+(x.d===x.t?' full':x.d?' part':'')+(n===cw?' cur':'');b.textContent=n;b.title='Неделя '+n+': '+weekData(n).title;b.style.borderBottom='3px solid '+phaseOf(n).c;b.onclick=()=>{viewWeek=n;show('week')};g.appendChild(b)}
+  $('phaseList').innerHTML=PHASES.map(p=>{let t=0,d=0;for(let n=p.weeks[0];n<=p.weeks[1];n++){const x=wDone(n);t+=x.t;d+=x.d}return `<div class="phase" style="--c:${p.c}"><h4>Фаза ${p.id}. ${p.name}</h4><div class="meta">Недели ${p.weeks[0]}–${p.weeks[1]} · ${weekDates(p.weeks[0]).split(' – ')[0]} – ${weekDates(p.weeks[1]).split(' – ')[1]} · выполнено ${Math.round(d/t*100)}%</div><p class="small" style="margin:6px 0 0">${p.goal}</p></div>`}).join('');
+  // week
+  const sel=$('weekSel');if(!sel.options.length){for(let n=1;n<=52;n++){const o=document.createElement('option');o.value=n;o.textContent=`Неделя ${n}: ${weekData(n).title}`;sel.appendChild(o)}}
+  sel.value=viewWeek;
+  const wd=weekData(viewWeek),ph=phaseOf(viewWeek),done=S.weeks[viewWeek]||[];
+  $('weekCard').innerHTML=`<div class="row" style="justify-content:space-between"><span class="tag" style="background:transparent;border:1px solid ${ph.c};color:${ph.c}">Фаза ${ph.id}. ${ph.name}</span><span class="small muted">${weekDates(viewWeek)}${viewWeek===cw?' · текущая':''}</span></div><h3 style="margin-top:10px">Неделя ${viewWeek}. ${wd.title}</h3><ul class="tasks">${wd.tasks.map((t,i)=>`<li class="${done[i]?'done':''}"><input type="checkbox" data-i="${i}" ${done[i]?'checked':''} aria-label="${t[0]}"><span><span class="k">${t[0]}:</span> ${t[1]}</span></li>`).join('')}</ul>`;
+  $('weekCard').querySelectorAll('input').forEach(c=>c.onchange=()=>{const a=S.weeks[viewWeek]||[];a[+c.dataset.i]=c.checked;S.weeks[viewWeek]=a;save()});
+  $('weekNote').value=S.notes[viewWeek]||'';
+  // daily
+  const dow=new Date().getDay(),list=dow===6?DAILY.sat:dow===0?DAILY.sun:DAILY.base,dk=today(),dv=S.daily[dk]||[];
+  $('todayLbl').textContent=new Date().toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'});
+  $('dailyPhase').textContent='Неделя '+cw+' · '+weekData(cw).title;
+  $('dailyList').innerHTML=list.map((t,i)=>`<li class="${dv[i]?'done':''}"><input type="checkbox" data-i="${i}" ${dv[i]?'checked':''}><span><span class="k">${t[0]}</span> — ${t[1]}</span></li>`).join('');
+  $('dailyList').querySelectorAll('input').forEach(c=>c.onchange=()=>{const a=S.daily[dk]||[];a[+c.dataset.i]=c.checked;S.daily[dk]=a;save()});
+  const st=$('streak');st.innerHTML='';const d0=new Date();d0.setDate(d0.getDate()-55);
+  for(let i=0;i<56;i++){const d=new Date(d0.getTime()+i*864e5),k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'),e=document.createElement('i');if((S.daily[k]||[]).some(Boolean))e.className='on';e.title=k;st.appendChild(e)}
+  // mocks
+  $('mTable').innerHTML=S.mocks.length?`<tr><th>Дата</th><th>L</th><th>R</th><th>W</th><th>S</th><th>Overall</th><th>Источник</th><th></th></tr>`+S.mocks.map((m,i)=>`<tr><td>${m.date}</td><td>${m.l}</td><td>${m.r}</td><td>${m.w}</td><td>${m.s}</td><td><b>${overall(m).toFixed(1)}</b></td><td class="small muted">${esc(m.note||'')}</td><td><button class="del" data-i="${i}" title="Удалить">×</button></td></tr>`).join(''):'<tr><td class="muted">Пока нет тестов. Первый — на неделе 26.</td></tr>';
+  $('mTable').querySelectorAll('.del').forEach(b=>b.onclick=()=>{S.mocks.splice(+b.dataset.i,1);save()});
+  drawChart();
+  // errors
+  $('eTable').innerHTML=S.errors.length?`<tr><th>Тип</th><th>Было</th><th>Правильно</th><th></th></tr>`+S.errors.slice().reverse().map((e,j)=>{const i=S.errors.length-1-j;return `<tr><td class="small">${e.cat}</td><td>${esc(e.wrong)}</td><td><b>${esc(e.right)}</b></td><td><button class="del" data-i="${i}">×</button></td></tr>`}).join(''):'<tr><td class="muted">Журнал пуст.</td></tr>';
+  $('eTable').querySelectorAll('.del').forEach(b=>b.onclick=()=>{S.errors.splice(+b.dataset.i,1);save()});
+  // report
+  $('report').textContent=report();
+}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function drawChart(){
+  const svg=$('mChart'),m=S.mocks;if(m.length<2){svg.innerHTML=`<text x="300" y="100" text-anchor="middle" fill="currentColor" opacity=".5" font-size="13">График появится после 2 тестов</text>`;return}
+  const x=i=>40+i*(540/(m.length-1)),y=v=>180-(v-3)/6*160;
+  let h='';for(let v=4;v<=9;v++)h+=`<line x1="40" x2="580" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="30" y="${y(v)+4}" font-size="11" text-anchor="end" fill="var(--muted)">${v}</text>`;
+  h+=`<line x1="40" x2="580" y1="${y(6.5)}" y2="${y(6.5)}" stroke="var(--ok)" stroke-dasharray="4 4"/><text x="580" y="${y(6.5)-6}" font-size="11" text-anchor="end" fill="var(--ok)">цель 6.5</text>`;
+  h+=`<polyline fill="none" stroke="var(--accent)" stroke-width="2.5" points="${m.map((t,i)=>x(i)+','+y(overall(t))).join(' ')}"/>`;
+  h+=m.map((t,i)=>`<circle cx="${x(i)}" cy="${y(overall(t))}" r="4" fill="var(--accent)"/>`).join('');
+  svg.innerHTML=h;
+}
+function report(){
+  const cw=curWeek(),wd=weekData(cw),dn=S.weeks[cw]||[];
+  let T=0,D=0;for(let n=1;n<=52;n++){const x=wDone(n);T+=x.t;D+=x.d}
+  const behind=[];for(let n=1;n<cw;n++){const x=wDone(n);if(x.d<x.t)behind.push(n)}
+  let r=`ОТЧЁТ · ${today()}\nУровень на старте: ${S.level} · Цель: IELTS Academic 6.5\nНеделя ${cw}/52 (${weekDates(cw)}) · Фаза ${phaseOf(cw).id}: ${phaseOf(cw).name}\nВыполнено всего: ${Math.round(D/T*100)}% · Серия: ${streak()} дн.\n`;
+  if(S.exam)r+=`Экзамен: ${S.exam}\n`;
+  r+=`\nЗАДАЧИ НЕДЕЛИ ${cw}: ${wd.title}\n`+wd.tasks.map((t,i)=>`[${dn[i]?'x':' '}] ${t[0]}: ${t[1]}`).join('\n');
+  if(behind.length)r+=`\n\nНЕЗАКРЫТЫЕ НЕДЕЛИ: ${behind.slice(-6).join(', ')}`;
+  if(S.notes[cw])r+=`\n\nЗАМЕТКИ: ${S.notes[cw]}`;
+  if(S.mocks.length)r+=`\n\nТЕСТЫ (последние):\n`+S.mocks.slice(-4).map(m=>`${m.date}: L${m.l} R${m.r} W${m.w} S${m.s} → ${overall(m).toFixed(1)} ${m.note?'('+m.note+')':''}`).join('\n');
+  if(S.errors.length)r+=`\n\nОШИБКИ (последние 10):\n`+S.errors.slice(-10).map(e=>`${e.cat} | ${e.wrong} → ${e.right}`).join('\n');
+  return r;
+}
+
+/* ---------- EVENTS ---------- */
+function show(t){document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===t));render();window.scrollTo({top:0})}
+$('tabs').onclick=e=>{if(e.target.dataset.t)show(e.target.dataset.t)};
+$('startDate').onchange=e=>{S.start=e.target.value||def.start;viewWeek=null;save()};
+$('examDate').onchange=e=>{S.exam=e.target.value;save()};
+$('level').onchange=e=>{S.level=e.target.value;save()};
+$('prevW').onclick=()=>{viewWeek=Math.max(1,viewWeek-1);render()};
+$('nextW').onclick=()=>{viewWeek=Math.min(52,viewWeek+1);render()};
+$('toCur').onclick=()=>{viewWeek=curWeek();render()};
+$('weekSel').onchange=e=>{viewWeek=+e.target.value;render()};
+$('weekNote').oninput=e=>{S.notes[viewWeek]=e.target.value;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(_){}};
+$('mDate').value=today();
+$('mAdd').onclick=()=>{const v=['mL','mR','mW','mS'].map(i=>parseFloat($(i).value));if(v.some(x=>isNaN(x)||x<0||x>9)){toast('Заполни 4 балла от 0 до 9');return}
+  S.mocks.push({date:$('mDate').value||today(),l:v[0],r:v[1],w:v[2],s:v[3],note:$('mNote').value});S.mocks.sort((a,b)=>a.date.localeCompare(b.date));['mL','mR','mW','mS','mNote'].forEach(i=>$(i).value='');save();toast('Тест добавлен')};
+$('eAdd').onclick=()=>{if(!$('eWrong').value.trim()||!$('eRight').value.trim()){toast('Заполни оба поля');return}S.errors.push({cat:$('eCat').value,wrong:$('eWrong').value.trim(),right:$('eRight').value.trim(),date:today()});$('eWrong').value='';$('eRight').value='';save();toast('Добавлено')};
+function copy(t,msg){(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast(msg)).catch(()=>{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast(msg)}catch(e){toast('Не удалось скопировать')}a.remove()})}
+$('copyReport').onclick=()=>copy(report(),'Отчёт скопирован');
+$('copyPrompt').onclick=()=>copy(AGENT_PROMPT,'Инструкция скопирована');
+$('exp').onclick=()=>{const b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='ielts-progress-'+today()+'.json';a.click();URL.revokeObjectURL(a.href)};
+$('imp').onclick=()=>$('impFile').click();
+$('impFile').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{S=Object.assign({},def,JSON.parse(t));viewWeek=null;save();toast('Импортировано')}catch(_){toast('Файл не подходит')}})};
+$('reset').onclick=()=>{if(confirm('Удалить весь прогресс? Сначала сделай экспорт.')){S=structuredClone(def);viewWeek=null;save()}};
+$('themeBtn').onclick=()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');r.dataset.theme=cur==='dark'?'light':'dark';try{localStorage.setItem(KEY+'-theme',r.dataset.theme)}catch(_){}};
+try{const t=localStorage.getItem(KEY+'-theme');if(t)document.documentElement.dataset.theme=t}catch(_){}
+
+/* resources */
+$('resList').innerHTML=RES.map(g=>`<h3 style="margin-top:8px">${g[0]}</h3><ul class="small" style="margin:4px 0 12px;padding-left:18px">${g[1].map(r=>`<li>${r[1]?`<a href="${r[1]}" target="_blank" rel="noopener">${r[0]}</a>`:r[0]}</li>`).join('')}</ul>`).join('')+
+`<p class="small muted">IELTS сдают в центрах British Council и IDP — проверь ближайший центр и даты на их сайтах. Некоторые программы принимают Duolingo English Test или PTE — это может быть дешевле. Уточни у своей программы.</p>`;
+
+render();
+</script>
+</body>
+</html>
